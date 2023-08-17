@@ -1,0 +1,57 @@
+@import "colors&fonts";
+@import "variables.scss";
+
+.modal-add{
+    background-color: $green;
+    .modal-header__text{
+        @include font;
+        font-size: 22px;
+        position: relative;
+        top: 10px;
+        left: 10px;
+    }
+    .modal-inputTitle{
+        height: 40px;
+        border-radius: 8px;
+        margin-bottom: 10px;
+        &::placeholder{
+            @include font;
+            font-size: 18px;
+        }
+    }
+    .modal-inputDescription{width: 100%;
+        height: 80px;
+        border-radius: 8px;
+        &::placeholder {
+            @include font;
+            font-size: 16px;
+        }
+    }
+}
+.modal-edit{
+    background-color: $green;
+    .modal-header__text{
+        @include font;
+        font-size: 22px;
+        position: relative;
+        top: 10px;
+        left: 10px;
+    }
+    .modal-inputEditTitle{
+        height: 40px;
+        border-radius: 8px;
+        margin-bottom: 10px;
+        &::placeholder{
+            @include font;
+            font-size: 18px;
+        }
+    }
+    .modal-inputEditDescription{width: 100%;
+        height: 80px;
+        border-radius: 8px;
+        &::placeholder {
+            @include font;
+            font-size: 16px;
+        }
+    }
+}

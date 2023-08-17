@@ -1,0 +1,13 @@
+//цвета
+$green: #d9e7d6;
+$gray: #f5f5f5;
+$blue: #dde7fa;
+$purple: #dfd5e6;
+$red: #f1d0cd;
+$white: #ffffff;
+
+//шрифт ROBOTO
+@mixin font {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+}

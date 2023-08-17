@@ -1,0 +1,287 @@
+@import "colors&fonts";
+@import "variables.scss";
+
+//Вложенность
+.trello {
+  margin: 0;
+  background-color: $gray;
+  padding: 15px;
+  //Хедер трелло с таймером
+  .trello-header {
+    margin: 0 auto;
+    align-items: center;
+    display: flex;
+    justify-content: space-around;
+    @include header;
+    .trello-header__headline {
+      @include font;
+      font-size: 28px;
+    }
+    .trello-header__timer {
+      @include font;
+      width: 100px;
+      height: 40px;
+      background-color: $white;
+      font-size: 17px;
+      @include flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 8px;
+    }
+  }
+  //Карточки трелло (туду, прогресс, доне)
+  .trello-main {
+    margin: 0 auto;
+    width: 95%;
+    flex-direction: row;
+    display: flex;
+    justify-content: space-between;
+    @media (max-width: 995px) {
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+    }
+    //TO DO
+    .container-todo {
+      @include containers;
+      @include font;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      .container-todo__header {
+        @include container-header;
+        background-color: $green;
+        font-size: 17px;
+      }
+      .container-tasks {
+        //добавление скролла
+        overflow-y: auto;
+        /* width */
+          &::-webkit-scrollbar {
+            width: 5px;
+          }
+          /* Track */
+          &::-webkit-scrollbar-track {
+            background: #fafafa; 
+          }
+          /* Handle */
+          &::-webkit-scrollbar-thumb {
+            // background: #888; 
+            background: $green;
+            border: 1px solid #b7b7b7;
+          }
+          /* Handle on hover */
+          &::-webkit-scrollbar-thumb:hover {
+            background: #c2d1bf;
+          }
+        @include container-main;
+        //TASK в TODO
+        .task-todo {
+          @include task;
+          @include flex;
+          background-color: $green;
+          flex-direction: column;
+          .task-todo-title {
+            flex-direction: column-reverse;
+            @include flex;
+            .task-todo-title__title {
+              font-size: 17px;
+              text-decoration: underline;
+            }
+            .btns-todo {
+              margin-left: auto;
+              display: flex;
+              justify-content: space-between;
+              height: 26px;
+              .btns-todo__btn-edit {
+                @include button-in-task;
+              }
+              .btns-todo__btn-delete {
+                @include button-in-task;
+              }
+            }
+          }
+          .task-todo-description {
+            @include flex;
+            align-items: center;
+            flex-wrap: nowrap;
+            padding-top: 0;
+            .task-description__info {
+              @include flex;
+            }
+            .btns-todo__btn-toInprogress{
+              min-width: 26px;
+              min-height: 48px;
+              @include button-in-task;
+            }
+          }
+          .task-todo-user {
+            @include flex;
+            .task-todo-user__user-name {
+              font-size: 14px;
+            }
+            .task-todo-user__time {
+              font-size: 14px;
+            }
+          }
+        }
+      }
+      .container-todo__footer {
+        @include container-footer;
+        background-color: $green;
+      }
+    }
+    //IN PROGRESS
+    .container-inprogress {
+      overflow: hidden;
+      @include containers;
+      @include font;
+      .container-inprogress__header {
+        @include container-header;
+        background-color: $gray;
+        font-size: 17px;
+      }
+      .container-tasks {
+        //добавление скролла
+        overflow-y: auto;
+        /* width */
+          &::-webkit-scrollbar {
+            width: 5px;
+          }
+          /* Track */
+          &::-webkit-scrollbar-track {
+            background: #fafafa; 
+          }
+          /* Handle */
+          &::-webkit-scrollbar-thumb {
+            // background: #888; 
+            background: $gray;
+            border: 1px solid #b7b7b7;
+          }
+          /* Handle on hover */
+          &::-webkit-scrollbar-thumb:hover {
+            background: #d9d9d9;
+          }
+        @include container-main;
+        height: 497px;
+        //TASK в IN PROGRESS
+        .task-inprogress {
+          @include task;
+          @include flex;
+          background-color: $gray;
+          flex-direction: column;
+          .task-inprogress-title {
+            flex-direction: column-reverse;
+            @include flex;
+            .task-inprogress-title__title {
+              font-size: 17px;
+              text-decoration: underline;
+            }
+            .btns-inprogress {
+              margin-left: auto;
+              display: flex;
+              justify-content: space-between;
+              height: 26px;
+              .btns-inprogress__btn-back {
+                @include button-in-task;
+              }
+              .btns-inprogress__btn-complete {
+                @include button-in-task;
+              }
+            }
+          }
+          .task-inprogress-description {
+            @include flex;
+            padding-top: 0;
+            .task-inprogress-description__info {
+            }
+          }
+          .task-inprogress-user {
+            @include flex;
+            .task-inprogress-user__user-name {
+              font-size: 14px;
+            }
+            .task-inprogress-user__time {
+              font-size: 14px;
+            }
+          }
+        }
+      }
+    }
+    //DONE
+    .container-done {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      @include containers;
+      @include font;
+      .container-done__header {
+        @include container-header;
+        background-color: $blue;
+        font-size: 17px;
+      }
+      .container-tasks {
+        //добавление скролла
+        overflow-y: auto;
+        /* width */
+          &::-webkit-scrollbar {
+            width: 5px;
+          }
+          /* Track */
+          &::-webkit-scrollbar-track {
+            background: #fafafa; 
+          }
+          /* Handle */
+          &::-webkit-scrollbar-thumb {
+            // background: #888; 
+            background: $blue;
+            border: 1px solid #b7b7b7;
+          }
+          /* Handle on hover */
+          &::-webkit-scrollbar-thumb:hover {
+            background: #c7d1e4;
+          }
+        @include container-main;
+        //TASK в DONE
+        .task-done {
+          @include task;
+          @include flex;
+          background-color: $blue;
+          flex-direction: column;
+          .task-done-title {
+            @include flex;
+            flex-direction: column-reverse;
+            .task-done-title__title {
+              font-size: 17px;
+              text-decoration: underline;
+            }
+            .task-done-title__btn-delete {
+              @include button-in-task;
+              margin-left: auto;
+              height: 26px;
+            }
+          }
+          .task-done-description {
+            @include flex;
+            padding-top: 0;
+            .task-done-description__info {
+            }
+          }
+          .task-done-user {
+            @include flex;
+            .task-done-user__user-name {
+              font-size: 14px;
+            }
+            .task-done-user__time {
+              font-size: 14px;
+            }
+          }
+        }
+      }
+      .container-done__footer {
+        @include container-footer;
+        background-color: $blue;
+      }
+    }
+  }
+}
